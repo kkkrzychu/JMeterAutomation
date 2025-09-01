@@ -1,0 +1,23 @@
+name: JMeter Performance Test
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # co 10 minut
+  workflow_dispatch:          # możliwość ręcznego uruchomienia
+
+jobs:
+  run-jmeter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install JMeter
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jmeter
+
+      - name: Run JMeter test
+        run: |
+          jmeter -n -t test.jmx -l results.jtl
+          cat results.jtl
