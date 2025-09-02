@@ -19,5 +19,5 @@ jobs:
 
       - name: Run JMeter test
         run: |
-          jmeter -n -t JMeterGitHub.jmx -l results.jtl
+          jmeter -n -t JMeterGitHub.jmx -l results.jtl -Jsearch_paths=lib
           cat results.jtl
