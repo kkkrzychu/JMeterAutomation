@@ -12,7 +12,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Install JMeter
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget tar
+
+      - name: Install JMeter 5.6.3
         run: |
           sudo apt-get update
           wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.3.tgz
@@ -20,5 +25,11 @@ jobs:
 
       - name: Run JMeter test
         run: |
-          ./apache-jmeter-5.6.3/bin/jmeter -n -t JMeterGitHub.jmx -l results.jtl
+          ./apache-jmeter-5.6.3/bin/jmeter -n -t JMeterGitHub.jmx -l results.jtl -e -o report
           cat results.jtl
+
+      - name: Upload JMeter report
+        uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-report
+          path: report
