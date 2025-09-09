@@ -1,4 +1,4 @@
-name: JMeter Performance Test
+name: JMeter Performance Test (Docker)
 
 on:
   schedule:
@@ -12,20 +12,30 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Install tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget tar
+     # - name: Install tools
+      #  run: |
+       #   sudo apt-get update
+        #  sudo apt-get install -y wget tar
 
-      - name: Install JMeter 5.6.3
-        run: |
-          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.3.tgz
-          tar -xzf apache-jmeter-5.6.3.tgz
+     # - name: Install JMeter 5.6.3
+      #  run: |
+       #   wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.3.tgz
+        #  tar -xzf apache-jmeter-5.6.3.tgz
+         
 
-      - name: Run JMeter test
+      #- name: Run JMeter test
+       # run: |
+        #  ./apache-jmeter-5.6.3/bin/jmeter -n -t JMeterGitHub.jmx -l results.jtl -e -o report
+         # cat results.jtl
+         #cały czas na nowo tu było instalowane, ale robimy przez docker
+
+      - name: Run JMeter test via Docker
         run: |
-          ./apache-jmeter-5.6.3/bin/jmeter -n -t JMeterGitHub.jmx -l results.jtl -e -o report
-          cat results.jtl
+          docker run --rm -v ${{ github.workspace }}:/tests \
+            justb4/jmeter:5.6.3 \
+            -n -t /tests/JMeterGitHub.jmx -l /tests/results.jtl -e -o /tests/report
+      
+      
 
       - name: Upload JMeter report
         uses: actions/upload-artifact@v4
