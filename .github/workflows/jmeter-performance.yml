@@ -34,8 +34,14 @@ jobs:
           docker run --rm -v ${{ github.workspace }}:/tests \
             justb4/jmeter:latest \
             -n -t /tests/JMeterGitHub.jmx -l /tests/results.jtl -e -o /tests/report
-      
-      
+
+            # --- Nowy krok: publikacja raportu na GitHub Pages ---
+      - name: Deploy JMeter report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3   # akcja do publikowania na gh-pages
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # wbudowany token do pushowania
+          publish_dir: ./report   # katalog z raportem JMeter
+          publish_branch: gh-pages   # branch, na który ma wrzucać (utworzy się automatycznie)
 
       - name: Upload JMeter report
         uses: actions/upload-artifact@v4
