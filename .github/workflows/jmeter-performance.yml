@@ -33,7 +33,7 @@ jobs:
         run: |
           docker run --rm -v ${{ github.workspace }}:/tests \
             justb4/jmeter:latest \
-            -n -t /tests/JMeterGitHub.jmx -l /tests/results.jtl -e -o /tests/report
+            -n -t /tests/[LoadTest]_GET_JsonPlaceHolder.jmx -l /tests/results.jtl -e -o /tests/report
 
             # --- Nowy krok: publikacja raportu na GitHub Pages ---
       - name: Deploy JMeter report to GitHub Pages
