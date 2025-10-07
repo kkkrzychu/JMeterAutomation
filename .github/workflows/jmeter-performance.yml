@@ -35,7 +35,7 @@ jobs:
             justb4/jmeter:latest \
             -n -t /tests/[LoadTest]_GET_JsonPlaceHolder.jmx -l /tests/results.jtl -e -o /tests/report
 
-      - name: Run Load Test
+      - name: Run Spike Test
         run: |
           docker run --rm -v ${{ github.workspace }}:/tests \
             justb4/jmeter:latest \
