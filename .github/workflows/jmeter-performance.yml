@@ -38,7 +38,7 @@ jobs:
       - name: Run Spike Test
         run: |
           docker run --rm -v ${{ github.workspace }}:/tests \
-            justb4/jmeter:latest \
+            justb4/jmeter:5.6.3-plugins \
             -n -t /tests/[SpikeTest]_GET_JsonPlaceHolder.jmx -l /tests/results.jtl -e -o /tests/SpikeTestResult
 
             # --- Nowy krok: publikacja raportu na GitHub Pages ---
