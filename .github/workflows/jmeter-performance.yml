@@ -32,13 +32,13 @@ jobs:
       - name: Run Load Test
         run: |
           docker run --rm -v ${{ github.workspace }}:/tests \
-            justb4/jmeter:5.6.3-plugins \
+            justb4/jmeter:5.6.2-full \
             -n -t /tests/[LoadTest]_GET_JsonPlaceHolder.jmx -l /tests/results.jtl -e -o /tests/LoadTestResult
 
       - name: Run Spike Test
         run: |
           docker run --rm -v ${{ github.workspace }}:/tests \
-            justb4/jmeter:5.6.3-plugins \
+            justb4/jmeter:5.6.2-full \
             -n -t /tests/[SpikeTest]_GET_JsonPlaceHolder.jmx -l /tests/results.jtl -e -o /tests/SpikeTestResult
 
             # --- Nowy krok: publikacja raportu na GitHub Pages ---
