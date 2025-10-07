@@ -29,11 +29,17 @@ jobs:
          # cat results.jtl
          #cały czas na nowo tu było instalowane, ale robimy przez docker
 
-      - name: Run JMeter test via Docker
+      - name: Run Load Test
         run: |
           docker run --rm -v ${{ github.workspace }}:/tests \
             justb4/jmeter:latest \
             -n -t /tests/[LoadTest]_GET_JsonPlaceHolder.jmx -l /tests/results.jtl -e -o /tests/report
+
+      - name: Run Load Test
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/tests \
+            justb4/jmeter:latest \
+            -n -t /tests/[SpikeTest]_GET_JsonPlaceHolder.jmx -l /tests/results.jtl -e -o /tests/report
 
             # --- Nowy krok: publikacja raportu na GitHub Pages ---
       - name: Deploy JMeter report to GitHub Pages
