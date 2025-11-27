@@ -187,7 +187,7 @@ $(document).ready(function() {
     }, [[0, 0]], 3);
 
     // Create statistics table
-    createTable($("#statisticsTable"), {"supportsControllersDiscrimination": true, "overall": {"data": ["Total", 50, 0, 0.0, 55.05999999999999, 8, 525, 12.0, 207.59999999999985, 460.69999999999953, 525.0, 56.433408577878104, 1584.434078724605, 7.605283577878104], "isController": false}, "titles": ["Label", "#Samples", "FAIL", "Error %", "Average", "Min", "Max", "Median", "90th pct", "95th pct", "99th pct", "Transactions/s", "Received", "Sent"], "items": [{"data": ["HTTP Request", 50, 0, 0.0, 55.05999999999999, 8, 525, 12.0, 207.59999999999985, 460.69999999999953, 525.0, 56.433408577878104, 1584.434078724605, 7.605283577878104], "isController": false}]}, function(index, item){
+    createTable($("#statisticsTable"), {"supportsControllersDiscrimination": true, "overall": {"data": ["Total", 50, 0, 0.0, 71.41999999999999, 16, 560, 26.0, 227.79999999999984, 474.8499999999996, 560.0, 51.07252298263534, 1433.7214313074567, 6.882820480081716], "isController": false}, "titles": ["Label", "#Samples", "FAIL", "Error %", "Average", "Min", "Max", "Median", "90th pct", "95th pct", "99th pct", "Transactions/s", "Received", "Sent"], "items": [{"data": ["HTTP Request", 50, 0, 0.0, 71.41999999999999, 16, 560, 26.0, 227.79999999999984, 474.8499999999996, 560.0, 51.07252298263534, 1433.7214313074567, 6.882820480081716], "isController": false}]}, function(index, item){
         switch(index){
             // Errors pct
             case 3:
